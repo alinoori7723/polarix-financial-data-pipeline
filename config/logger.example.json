@@ -1,0 +1,22 @@
+{
+  "environment": "sandbox",
+  "broker_profile": "dynamic",
+  "current_observed_broker": "Sandbox",
+  "data_root": ".polarix/data",
+  "reports_root": ".polarix/reports",
+  "logs_root": ".polarix/logs",
+  "symbols": ["SPX500", "NDX100"],
+  "plausible_broker_utc_offsets_minutes": [0, 120, 180],
+  "max_host_clock_offset_ms": 50,
+  "max_future_jitter_ms": 250,
+  "max_live_tick_age_ms": 5000,
+  "required_fresh_ticks_for_offset": 20,
+  "flush_max_rows": 5000,
+  "flush_max_seconds": 60,
+  "closed_market_idle_backoff_seconds_max": 30,
+  "parquet_compression": "zstd",
+  "price_scale_default": 100,
+  "no_trading_functions_allowed": true,
+  "fail_if_terminal_trade_allowed": true,
+  "max_failed_attempts_before_human_review": 3
+}

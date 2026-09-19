@@ -1,0 +1,76 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "polarix-financial-data-pipeline"
+version = "0.2.0"
+description = "Financial data pipelines with explicit time contracts, quality gates, and verifiable feature artifacts"
+requires-python = ">=3.11,<3.15"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Ali Noori" }]
+keywords = ["data-engineering", "polars", "duckdb", "parquet", "financial-data", "mlops"]
+dependencies = [
+    "duckdb>=1.4,<2",
+    "numpy>=1.26,<3",
+    "polars>=1.38,<2",
+    "psutil>=7,<8",
+    "pyarrow>=19,<24",
+]
+
+[project.optional-dependencies]
+analysis = ["scipy>=1.15,<2"]
+databento = ["databento>=0.50"]
+mt5 = ["MetaTrader5>=5.0; sys_platform == 'win32'"]
+dev = [
+    "build>=1.2,<2",
+    "pandas>=2.2,<4",
+    "pytest>=8,<10",
+    "pytest-cov>=6,<8",
+    "ruff>=0.16,<0.17",
+]
+
+[project.scripts]
+polarix = "polarix.cli:main"
+polarix-logger = "polarix.ingestion.main:main"
+polarix-supervisor = "polarix.orchestration.supervisor:main"
+
+[project.urls]
+Repository = "https://github.com/alinoori7723/polarix-financial-data-pipeline"
+Issues = "https://github.com/alinoori7723/polarix-financial-data-pipeline/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["polarix*"]
+exclude = ["polarix_logger*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+
+[tool.ruff.lint.per-file-ignores]
+"scripts/*.py" = ["E402"]
+
+[tool.coverage.run]
+source = ["polarix"]
+relative_files = true
+
+[tool.coverage.report]
+show_missing = true
+skip_empty = true
+
+[tool.uv]
+required-version = ">=0.8"

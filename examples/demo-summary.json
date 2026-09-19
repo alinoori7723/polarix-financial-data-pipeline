@@ -1,0 +1,83 @@
+{
+  "run_id": "demo-001",
+  "status": "PASS",
+  "data_origin": "synthetic",
+  "integrity": "VERIFIED",
+  "artifact_count": 29,
+  "stages": [
+    {
+      "duration_seconds": 0.530901,
+      "name": "ingestion",
+      "status": "PASS"
+    },
+    {
+      "duration_seconds": 0.254984,
+      "name": "normalization",
+      "status": "PASS"
+    },
+    {
+      "duration_seconds": 0.272545,
+      "name": "quality",
+      "status": "PASS"
+    },
+    {
+      "duration_seconds": 0.174941,
+      "name": "alignment",
+      "status": "PASS"
+    },
+    {
+      "duration_seconds": 0.276027,
+      "name": "aggregation_features",
+      "status": "PASS"
+    },
+    {
+      "duration_seconds": 0.242369,
+      "name": "feature_quality",
+      "status": "PASS"
+    },
+    {
+      "duration_seconds": 0.092249,
+      "name": "export",
+      "status": "PASS"
+    }
+  ],
+  "feature_tables": [
+    {
+      "symbol_pair": "ES_SPX500",
+      "bucket_size": "15s",
+      "rows": 80,
+      "first_feature_utc_ns": 1767614415000000000,
+      "last_feature_utc_ns": 1767615600000000000,
+      "join_safe_ratio": 1.0
+    },
+    {
+      "symbol_pair": "ES_SPX500",
+      "bucket_size": "60s",
+      "rows": 20,
+      "first_feature_utc_ns": 1767614460000000000,
+      "last_feature_utc_ns": 1767615600000000000,
+      "join_safe_ratio": 1.0
+    },
+    {
+      "symbol_pair": "NQ_NDX100",
+      "bucket_size": "15s",
+      "rows": 80,
+      "first_feature_utc_ns": 1767614415000000000,
+      "last_feature_utc_ns": 1767615600000000000,
+      "join_safe_ratio": 1.0
+    },
+    {
+      "symbol_pair": "NQ_NDX100",
+      "bucket_size": "60s",
+      "rows": 20,
+      "first_feature_utc_ns": 1767614460000000000,
+      "last_feature_utc_ns": 1767615600000000000,
+      "join_safe_ratio": 1.0
+    }
+  ],
+  "fixture": {
+    "seed": 42,
+    "seconds": 1200,
+    "scenario": "normal"
+  }
+}

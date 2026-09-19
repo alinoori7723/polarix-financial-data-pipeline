@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Python ${{ matrix.python }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install uv==0.12.17
+      - run: uv sync --frozen --extra dev --extra analysis
+      - run: uv run --no-sync ruff check .
+      - run: uv run --no-sync ruff format --check .
+      - run: uv run --no-sync pytest -q --cov=polarix --cov-report=xml --junitxml=junit.xml
+      - run: uv run --no-sync polarix demo --run-id ci-demo
+      - run: uv run --no-sync polarix inspect .polarix/runs/ci-demo
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        if: always()
+        with:
+          name: validation-${{ matrix.os }}-${{ matrix.python }}
+          path: |
+            coverage.xml
+            junit.xml
+            .polarix/runs/ci-demo/run_manifest.json
+          include-hidden-files: true
+
+  package:
+    name: Build and installed-wheel smoke test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.13'
+      - run: python -m pip install uv==0.12.17
+      - run: uv build
+      - run: uv venv /tmp/polarix-wheel
+      - run: uv pip install --python /tmp/polarix-wheel/bin/python dist/*.whl
+      - working-directory: /tmp
+        run: /tmp/polarix-wheel/bin/polarix demo --output /tmp/polarix-package-demo --run-id wheel-smoke --seconds 120
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: distributions
+          path: dist/*
