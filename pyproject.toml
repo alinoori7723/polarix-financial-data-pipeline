@@ -17,7 +17,7 @@ dependencies = [
     "numpy>=1.26,<3",
     "polars>=1.38,<2",
     "psutil>=7,<8",
-    "pyarrow>=19,<24",
+    "pyarrow>=19,<26",
 ]
 
 [project.optional-dependencies]
