@@ -614,17 +614,17 @@ wheels = [
 
 [[package]]
 name = "metatrader5"
-version = "5.0.6180"
+version = "5.0.6231"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
     { name = "numpy", version = "2.5.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/0f/c3/f2a533ce00a9ab57bafb49586896d0eefcfd27c5a30ae1c980ff8cb09500/metatrader5-5.0.6180-cp311-cp311-win_amd64.whl", hash = "sha256:af901f0ca6cc487874af482b53f297f21f07887fe0b81017025ae7355d6df90b", size = 48026, upload-time = "2026-09-05T04:59:46.077Z" },
-    { url = "https://files.pythonhosted.org/packages/5b/84/e9be814b53711be44e3be5518fada7b92015345fbbd4b3a4b51f98c1ab12/metatrader5-5.0.6180-cp312-cp312-win_amd64.whl", hash = "sha256:7870e1497026d3f0d9b296904e3bcef48292d5b665b1fff1fb44efd41631b998", size = 47969, upload-time = "2026-09-05T04:59:46.938Z" },
-    { url = "https://files.pythonhosted.org/packages/00/cb/edc9bd6efff880c65b63ceffaa971f0cf70b8e4ec781eafd4fdee6c3c26c/metatrader5-5.0.6180-cp313-cp313-win_amd64.whl", hash = "sha256:41a89f9c87ab690f7c404ca0dd1bbdfd41630fff3860d4145ed464547860fb97", size = 47970, upload-time = "2026-09-05T04:59:47.948Z" },
-    { url = "https://files.pythonhosted.org/packages/f3/44/6354e8f17760467b26b781da0ca41e67e70c95e91badd06a43250d3f1487/metatrader5-5.0.6180-cp314-cp314-win_amd64.whl", hash = "sha256:9cbaf92dc525cb7bdeac7656d9a1b3e9e467dd9d34eb3a0107b58d651be3a5fc", size = 49531, upload-time = "2026-09-05T04:59:48.952Z" },
+    { url = "https://files.pythonhosted.org/packages/c5/46/2d85a3ea15a93123e6b4c49ff600e59c0bb9d0c3fc84462091595b76d8ff/metatrader5-5.0.6231-cp311-cp311-win_amd64.whl", hash = "sha256:1e0fb5e43437f426be3e5aef614f6798a918377db4cdb380593a66d1908f918d", size = 48022, upload-time = "2026-09-27T12:22:33.889Z" },
+    { url = "https://files.pythonhosted.org/packages/90/ed/525a69afbc050f5b19342a6ddada4f086e2aa9ef63b987bef5d723f29586/metatrader5-5.0.6231-cp312-cp312-win_amd64.whl", hash = "sha256:b94b1f8f52087ae36dfac5f352a96f5d04fe308704d9515f82cf5d1470bc31d4", size = 47968, upload-time = "2026-09-27T12:22:35.219Z" },
+    { url = "https://files.pythonhosted.org/packages/b2/f2/c310381487da4ea67ee6e71bd8244857fe9c276ea37db0c70b5fb280fe4a/metatrader5-5.0.6231-cp313-cp313-win_amd64.whl", hash = "sha256:3a8c8349ce691a4ef05e314afc034ad82f4dbb19415efc7442af5ea075d5e797", size = 47964, upload-time = "2026-09-27T12:22:36.136Z" },
+    { url = "https://files.pythonhosted.org/packages/bd/7e/5f1ca5f564c7d7552c9706c976de05b594b61d82ae09a189c69662230fbc/metatrader5-5.0.6231-cp314-cp314-win_amd64.whl", hash = "sha256:9a63f026072479298be0d0cbc1a878d4f659aff2e18280a4128843dbb425841b", size = 49531, upload-time = "2026-09-27T12:22:37.03Z" },
 ]
 
 [[package]]
