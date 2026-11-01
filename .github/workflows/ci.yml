@@ -35,7 +35,7 @@ jobs:
       - run: uv run --no-sync pytest -q --cov=polarix --cov-report=xml --junitxml=junit.xml
       - run: uv run --no-sync polarix demo --run-id ci-demo
       - run: uv run --no-sync polarix inspect .polarix/runs/ci-demo
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
           name: validation-${{ matrix.os }}-${{ matrix.python }}
@@ -60,7 +60,7 @@ jobs:
       - run: uv pip install --python /tmp/polarix-wheel/bin/python dist/*.whl
       - working-directory: /tmp
         run: /tmp/polarix-wheel/bin/polarix demo --output /tmp/polarix-package-demo --run-id wheel-smoke --seconds 120
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: distributions
           path: dist/*
